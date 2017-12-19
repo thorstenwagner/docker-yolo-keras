@@ -7,6 +7,7 @@ ENV PATH $CONDA_DIR/bin:$PATH
 
 RUN apt-get update
 RUN apt-get install -y python2.7 wget git
+RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda2-4.2.12-Linux-x86_64.sh
 RUN bash Miniconda2-4.2.12-Linux-x86_64.sh -b -p /opt/conda
 RUN rm Miniconda2-4.2.12-Linux-x86_64.sh
 RUN pip install --upgrade pip
