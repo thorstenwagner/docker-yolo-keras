@@ -24,7 +24,7 @@ ENV NB_UID 1000
     
 #USER keras
 
-# Python ---
+# Python #
 ARG python_version=2.7
 
 RUN conda install -y python=${python_version} && \
