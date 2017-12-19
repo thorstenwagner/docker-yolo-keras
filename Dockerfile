@@ -27,16 +27,16 @@ ENV NB_UID 1000
 # Python #
 ARG python_version=2.7
 
-RUN conda install -y python=${python_version} && \
-    pip install --upgrade pip && \
-    pip install tensorflow-gpu && \
-    pip install https://cntk.ai/PythonWheel/GPU/cntk-2.3.1-cp27-cp27mu-linux_x86_64.whl && \
-    conda install Pillow scikit-learn notebook pandas matplotlib mkl nose pyyaml six h5py && \
-    conda install theano pygpu bcolz && \
-    pip install sklearn_pandas && \
-    git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests] && \
-    pip install git+git://github.com/keras-team/keras.git && \
-    conda clean -yt
+RUN conda install -y python=${python_version}
+RUN pip install --upgrade pip
+RUN pip install tensorflow-gpu
+#RUN pip install https://cntk.ai/PythonWheel/GPU/cntk-2.3.1-cp27-cp27mu-linux_x86_64.whl
+RUN conda install Pillow scikit-learn notebook pandas matplotlib mkl nose pyyaml six h5py
+RUN conda install theano pygpu bcolz
+RUN pip install sklearn_panda
+RUN git clone git://github.com/keras-team/keras.git /src && pip install -e /src[tests]
+RUN pip install git+git://github.com/keras-team/keras.git && \
+RUN conda clean -yt
 
 #ADD theanorc /home/keras/.theanorc
 
