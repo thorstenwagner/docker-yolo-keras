@@ -42,3 +42,7 @@ RUN conda install -y python=${python_version} && \
 ADD theanorc /home/keras/.theanorc
 
 ENV PYTHONPATH='/src/:$PYTHONPATH'
+
+# Yolo specific things
+RUN pip install imgaug
+RUN git clone https://github.com/experiencor/basic-yolo-keras
