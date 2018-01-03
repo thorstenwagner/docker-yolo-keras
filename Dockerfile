@@ -13,7 +13,7 @@ RUN rm Miniconda2-4.2.12-Linux-x86_64.sh
 RUN pip install --upgrade pip
 RUN pip install tensorflow-gpu
 RUN pip install keras
-RUN apt-get install -y libopencv-dev python-opencv vim imagemagick
+RUN apt-get install -y libopencv-dev python-opencv vim imagemagick nano
 RUN pip install imgaug
 RUN conda install -y opencv
 RUN conda install -y h5py
