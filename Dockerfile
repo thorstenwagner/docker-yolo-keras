@@ -19,7 +19,5 @@ RUN pip install imgaug
 RUN conda install -y opencv
 RUN conda install -y h5py
 RUN conda install -y tqdm
-RUN git clone https://www.github.com/keras-team/keras-contrib.git
-RUN cd keras-contrib
-RUN python setup.py install
+RUN pip install git+https://www.github.com/keras-team/keras-contrib.git
 RUN mkdir /root/logs/
