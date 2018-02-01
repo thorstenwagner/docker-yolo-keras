@@ -11,9 +11,7 @@ RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda2-4.2.12-Linux-x86
 RUN bash Miniconda2-4.2.12-Linux-x86_64.sh -b -p /opt/conda
 RUN rm Miniconda2-4.2.12-Linux-x86_64.sh
 RUN pip install --upgrade pip
-RUN pip install tensorflow-gpu
-RUN pip install keras
-RUN pip install mrcfile
+RUN pip install tensorflow-gpu keras mrcfile
 RUN apt-get install -y libopencv-dev python-opencv vim imagemagick nano
 RUN pip install imgaug
 RUN conda install -y opencv
@@ -21,3 +19,23 @@ RUN conda install -y h5py
 RUN conda install -y tqdm
 RUN pip install git+https://www.github.com/keras-team/keras-contrib.git
 RUN mkdir /root/logs/
+
+#### SETUP SSH
+# Setup ssh server
+RUN apt-get update && apt-get install -y openssh-server
+RUN mkdir /var/run/sshd
+RUN echo 'root:sshtest' | chpasswd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# SSH login fix. Otherwise user is kicked off after login
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+
+# CUDA environment is not passed by default to the SSH session. One has to export it in /etc/profile/ 
+RUN echo "export PATH=$PATH" >> /etc/profile && \
+    echo "ldconfig" >> /etc/profile
+
+ENV NOTVISIBLE "in users profile"
+RUN echo "export VISIBLE=now" >> /etc/profile
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
