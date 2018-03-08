@@ -11,7 +11,7 @@ RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda2-4.2.12-Linux-x86
 RUN bash Miniconda2-4.2.12-Linux-x86_64.sh -b -p /opt/conda
 RUN rm Miniconda2-4.2.12-Linux-x86_64.sh
 RUN pip install --upgrade pip
-RUN pip install -I tensorflow-gpu=1.4.1
+RUN pip install -I tensorflow-gpu==1.4.1
 RUN pip install -U keras
 RUN pip install -U mrcfile
 RUN pip install -U scikit-learn
