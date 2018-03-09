@@ -14,6 +14,7 @@ RUN pip install --upgrade pip
 RUN pip install -I tensorflow-gpu==1.4.1
 RUN pip install -U keras
 RUN pip install -U mrcfile
+RUN pip install jupyter
 RUN pip install -U scikit-learn
 RUN python -mpip install -U matplotlib
 RUN apt-get install -y libopencv-dev python-opencv vim imagemagick nano
