@@ -17,7 +17,7 @@ RUN pip install -U mrcfile
 RUN pip install jupyter
 RUN pip install -U scikit-learn
 RUN python -mpip install -U matplotlib
-RUN apt-get install -y libopencv-dev python-opencv vim imagemagick nano
+RUN apt-get install -y libopencv-dev python-opencv vim imagemagick nano freeglut3-dev
 RUN pip install imgaug
 RUN conda install -y opencv
 RUN conda install -y h5py
