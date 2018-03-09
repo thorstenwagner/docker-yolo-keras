@@ -32,6 +32,6 @@ RUN conda install -y eman-deps=9 -c cryoem -c defaults -c conda-forge
 RUN git clone https://github.com/cryoem/eman2.git
 RUN mkdir /eman2_build
 RUN cd /eman2_build && cmake ../eman2
-RUN cd /eman2_build && make -j
-RUN cd /eman2_build && make install
+#RUN cd /eman2_build && make -j
+#RUN cd /eman2_build && make install
 
