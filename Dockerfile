@@ -32,6 +32,6 @@ RUN conda install -y eman-deps=9 -c cryoem -c defaults -c conda-forge
 RUN pip install matplotlib==2.0.0
 RUN git clone https://github.com/cryoem/eman2.git
 RUN mkdir /eman2_build
-RUN echo 'cd /eman2_build && cmake ../eman2 && make -j && make install' > eman2build.sh
+RUN echo 'cd /eman2_build && cmake ../eman2 && make && make install' > eman2build.sh
 RUN bash eman2build.sh
 
